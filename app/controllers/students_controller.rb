@@ -33,6 +33,16 @@ class StudentsController < ApplicationController
     student.destroy
   end
 
+  def update
+    student = Student.find(params[:id])
+    if student
+      student.update(student_params)
+      render json: student
+    else
+      render_not_found_response
+    end
+  end
+
   private
 
   def student_params

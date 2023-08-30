@@ -31,6 +31,16 @@ class InstructorsController < ApplicationController
     instructor.destroy
   end
 
+  def update
+    instructor = Instructor.find(params[:id])
+    if instructor
+      instructor.update(instructor_params)
+      render json: instructor
+    else
+      render_not_found_response
+    end
+  end
+
   private
 
   def instructor_params
